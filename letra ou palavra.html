@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escolher Letra</title>
+<link rel="stylesheet" href="css.css">
+<body>
+
+    <div class="sidebar">
+      <h2>Menu</h2>
+      <ul>
+        <li><a href="index.html">Dado</a></li>
+        <li><a href="bingo.htm">Bingo</a></li>
+        <li><a href="letra ou palavra.html">Letra ou Palavra</a></li>
+      </ul>
+    </div>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  #letraSelecionada {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<h1>Escolher Letra Aleatória</h1>
+<p>Clique no botão para escolher uma letra aleatória:</p>
+<button onclick="escolherLetra()">Escolher Letra</button>
+<p id="letraSelecionada"></p>
+
+<script>
+function escolherLetra() {
+  // Lista de letras do alfabeto
+  var letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  
+  // Gerar um índice aleatório para selecionar uma letra
+  var indice = Math.floor(Math.random() * letras.length);
+  
+  // Obter a letra correspondente ao índice gerado
+  var letra = letras.charAt(indice);
+  
+  // Exibir a letra selecionada na página
+  document.getElementById("letraSelecionada").textContent = "Letra escolhida: " + letra;
+}
+</script>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escolher Palavra Aleatória</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  #palavraSelecionada {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<hr>
+<body>
+
+<h1>Escolher Palavra Aleatória</h1>
+<p>Clique no botão para escolher uma palavra aleatória:</p>
+<button onclick="escolherPalavra()">Escolher Palavra</button>
+<p id="palavraSelecionada"></p>
+
+<script>
+// Lista de palavras predefinidas
+var palavras = ["casa","carro","computador","amor","felicidade","escola","livro","mesa","cadeira","janela","gato","cachorro","montanha","praia","amor","manhã"];
+
+function escolherPalavra() {
+  // Gerar um índice aleatório para selecionar uma palavra
+  var indice = Math.floor(Math.random() * palavras.length);
+  
+  // Obter a palavra correspondente ao índice gerado
+  var palavra = palavras[indice];
+  
+  // Exibir a palavra selecionada na página
+  document.getElementById("palavraSelecionada").textContent = "Palavra escolhida: " + palavra;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bingo</title>
+<link rel="stylesheet" href="css.css">
+<body>
+
+    <div class="sidebar">
+      <h2>Menu</h2>
+      <ul>
+        <li><a href="index.html">Dado</a></li>
+        <li><a href="bingo.htm">Bingo</a></li>
+        <li><a href="letra ou palavra.html">Letra ou Palavra</a></li>
+      </ul>
+    </div>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  #bingo {
+    display: inline-block;
+    margin-top: 50px;
+  }
+  .numero {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    line-height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  #btnSortear, #btnReiniciar {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-right: 10px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Bingo</h1>
+
+<div id="bingo">
+  <div class="numero"></div>
+  <div class="numero"></div>
+  <div class="numero"></div>
+  <div class="numero"></div>
+  <div class="numero"></div>
+</div>
+
+<button id="btnSortear" onclick="sortearNumero()">Sortear Número</button>
+<button id="btnReiniciar" onclick="reiniciarJogo()">Reiniciar Jogo</button>
+
+<script>
+var numerosSorteados = [];
+var numerosRestantes = Array.from({length: 75}, (_, i) => i + 1);
+
+function sortearNumero() {
+  if (numerosRestantes.length === 0) {
+    alert("Todos os números já foram sorteados!");
+    return;
+  }
+
+  var index = Math.floor(Math.random() * numerosRestantes.length);
+  var numero = numerosRestantes.splice(index, 1)[0];
+  numerosSorteados.push(numero);
+
+  var divNumero = document.querySelector("#bingo .numero:nth-child(" + numerosSorteados.length + ")");
+  divNumero.textContent = numero;
+
+  if (numerosSorteados.length === 75) {
+    document.getElementById("btnSortear").disabled = true;
+  }
+}
+
+function reiniciarJogo() {
+  numerosSorteados = [];
+  numerosRestantes = Array.from({length: 75}, (_, i) => i + 1);
+  document.getElementById("btnSortear").disabled = false;
+  var divNumeros = document.querySelectorAll("#bingo .numero");
+  divNumeros.forEach(function(divNumero) {
+    divNumero.textContent = "";
+  });
+}
+</script>
+
+</body>
+</html>
